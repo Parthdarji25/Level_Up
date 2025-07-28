@@ -4,6 +4,8 @@ const mysql = require("mysql2");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const path = require("path");  // <-- Add this line
+
 
 const app = express();
 app.use(cors());
