@@ -199,7 +199,15 @@ app.post("/api/points", authenticateToken, (req, res) => {
   );
 });
 
+// Serve the static files from the React frontend build
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+});
+
 // Server start
-app.listen(4000, () => {
-  console.log("API server at http://localhost:4000");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
